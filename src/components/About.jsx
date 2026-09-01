@@ -11,7 +11,7 @@ export default function About() {
             Một lò nướng, hai bàn tay
           </h2>
           <p className="mt-6 text-base leading-relaxed text-cocoa-soft sm:text-lg">
-            Timu bắt đầu từ căn bếp nhà, nướng mẻ đầu tiên cho bạn bè. Bây giờ tiệm vẫn giữ
+            Mitu bắt đầu từ căn bếp nhà, nướng mẻ đầu tiên cho bạn bè. Bây giờ tiệm vẫn giữ
             đúng cách làm đó: kem đánh tay, trái cây mua buổi sáng, mỗi loại chỉ vài chục cái
             một ngày. Bánh ra lò lúc nào, tiệm đăng lúc đó.
           </p>

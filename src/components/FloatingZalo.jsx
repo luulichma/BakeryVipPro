@@ -18,7 +18,7 @@ export default function FloatingZalo() {
       href={zaloLink()}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Nhắn Zalo cho Tiệm bánh Timu"
+      aria-label="Nhắn Zalo cho Tiệm bánh Mitu"
       className={`fixed right-5 bottom-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-raspberry text-cream shadow-[0_14px_30px_-10px_rgba(196,87,107,0.9)] transition-all duration-300 hover:bg-raspberry-deep sm:right-8 sm:bottom-8 ${
         show ? 'translate-y-0 scale-100 opacity-100' : 'pointer-events-none translate-y-4 scale-90 opacity-0'
       }`}

@@ -1,8 +1,8 @@
-# Tiệm bánh Timu — Tổng quan dự án
+# Tiệm bánh Mitu — Tổng quan dự án
 
 ## 1. Mục tiêu
 
-Website **một trang (one-page)** giới thiệu tiệm bánh ngọt Timu.
+Website **một trang (one-page)** giới thiệu tiệm bánh ngọt Mitu.
 
 Đây **không phải** website thương mại điện tử. Trang không có giỏ hàng, không đăng nhập,
 không thanh toán, không lưu đơn hàng. Việc duy nhất trang này phải làm là:

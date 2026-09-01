@@ -26,7 +26,7 @@ export default function Hero() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-cocoa-soft sm:text-lg lg:mx-0">
-            Timu làm cupcake, bánh kem và tráng miệng theo mẻ nhỏ, nướng trong ngày.
+            Mitu làm cupcake, bánh kem và tráng miệng theo mẻ nhỏ, nướng trong ngày.
             Chọn bánh rồi nhắn Zalo — tiệm giữ phần cho bạn.
           </p>
 

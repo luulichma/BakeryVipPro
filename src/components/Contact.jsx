@@ -24,7 +24,7 @@ export default function Contact() {
 
           <div className="relative">
             <h2 className="mx-auto max-w-xl text-4xl font-semibold text-cream sm:text-5xl">
-              Đói bánh thì nhắn Timu
+              Đói bánh thì nhắn Mitu
             </h2>
             <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-cream/70">
               Tiệm trả lời Zalo trong giờ mở cửa, thường dưới 10 phút.

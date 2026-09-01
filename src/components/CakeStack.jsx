@@ -1,7 +1,9 @@
+import Button from './Button'
 import ZaloIcon from './ZaloIcon'
 import { zaloLink } from '../lib/site'
 
-/** Một quả dâu nhỏ đặt trên mặt bánh. */
+const LINE = { stroke: 'var(--color-cocoa)', strokeOpacity: 0.16, strokeWidth: 1.6, fill: 'none' }
+
 function Berry({ x, y, scale = 1, rotate = 0, delay }) {
   return (
     <g
@@ -11,13 +13,15 @@ function Berry({ x, y, scale = 1, rotate = 0, delay }) {
     >
       <path
         d="M0 0c5.4 0 9 3.4 9 8 0 6.2-5.2 12-9 12s-9-5.8-9-12c0-4.6 3.6-8 9-8Z"
-        fill="#C4576B"
+        fill="var(--color-raspberry)"
       />
-      <path d="M-1.6-1.5c-2.6-2.4-6-2.8-8.2-1.6 1 2.4 3.6 4 6.4 4Z" fill="#8FAE7A" />
-      <path d="M1.6-1.5c2.6-2.4 6-2.8 8.2-1.6-1 2.4-3.6 4-6.4 4Z" fill="#8FAE7A" />
-      <circle cx="-3" cy="6" r="0.9" fill="#F3E3C3" opacity="0.9" />
-      <circle cx="2.6" cy="9" r="0.9" fill="#F3E3C3" opacity="0.9" />
-      <circle cx="-1" cy="12.5" r="0.9" fill="#F3E3C3" opacity="0.9" />
+      <path d="M-1.6-1.5c-2.6-2.4-6-2.8-8.2-1.6 1 2.4 3.6 4 6.4 4Z" fill="#7E9B6A" />
+      <path d="M1.6-1.5c2.6-2.4 6-2.8 8.2-1.6-1 2.4-3.6 4-6.4 4Z" fill="#7E9B6A" />
+      <g fill="var(--color-butter)">
+        <circle cx="-3" cy="6" r="0.9" />
+        <circle cx="2.6" cy="9" r="0.9" />
+        <circle cx="-1" cy="12.5" r="0.9" />
+      </g>
     </g>
   )
 }
@@ -25,101 +29,120 @@ function Berry({ x, y, scale = 1, rotate = 0, delay }) {
 /**
  * Điểm ký ức của trang: chiếc bánh tự xếp tầng khi tải trang,
  * và nút Zalo chính là cái topper cắm trên đỉnh bánh.
+ *
+ * Tầng giữa để lộ mặt cắt cốt bánh — đây là mảng đậm duy nhất,
+ * giữ cho cả chiếc bánh không chìm vào nền kem nhạt.
  */
 export default function CakeStack() {
   return (
     <div className="relative mx-auto flex w-full max-w-[26rem] flex-col items-center">
-      {/* Topper — đây là nút CTA thật, không phải hình vẽ */}
-      <div className="cake-topper z-10 flex flex-col items-center" style={{ animationDelay: '1.25s' }}>
+      <div className="cake-topper z-10 flex flex-col items-center" style={{ animationDelay: '1.3s' }}>
         <div className="cake-topper-sway flex flex-col items-center">
-          <a
-            href={zaloLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full bg-raspberry px-6 py-3 text-[0.95rem] font-semibold text-cream shadow-[0_10px_28px_-8px_rgba(196,87,107,0.75)] transition hover:-translate-y-0.5 hover:bg-raspberry-deep"
-          >
+          <Button href={zaloLink()} target="_blank" rel="noopener noreferrer" size="lg" variant="primary">
             <ZaloIcon className="h-5 w-5" />
             Nhắn Zalo đặt bánh
-          </a>
+          </Button>
           <span aria-hidden="true" className="h-8 w-[3px] rounded-full bg-cocoa/35" />
         </div>
       </div>
 
       <svg
-        viewBox="0 96 400 300"
-        className="-mt-1 w-full drop-shadow-[0_24px_36px_rgba(74,47,42,0.13)]"
+        viewBox="0 96 400 306"
+        className="-mt-1 w-full"
         role="img"
-        aria-label="Bánh kem ba tầng của Tiệm bánh Timu"
+        aria-label="Bánh kem ba tầng của Tiệm bánh Mitu"
       >
-        {/* Dâu trên mặt */}
-        <Berry x={168} y={104} scale={0.85} rotate={-8} delay={1.05} />
-        <Berry x={200} y={99} scale={1} rotate={2} delay={1.1} />
-        <Berry x={232} y={106} scale={0.8} rotate={9} delay={1.15} />
+        <defs>
+          <clipPath id="mid-tier">
+            <rect x="88" y="196" width="224" height="72" rx="7" />
+          </clipPath>
+          <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#fff" stopOpacity="0.34" />
+            <stop offset="0.4" stopColor="#fff" stopOpacity="0" />
+            <stop offset="1" stopColor="#4A2F2A" stopOpacity="0.08" />
+          </linearGradient>
+        </defs>
 
-        {/* Kem phủ mặt bánh, viền lượn sóng */}
+        {/* Bóng đổ trên mặt bàn */}
+        <ellipse cx="200" cy="374" rx="150" ry="15" fill="var(--color-cocoa)" opacity="0.07" />
+
+        {/* Đĩa — vẽ trước nên nằm sau bánh, chỉ thấy vành trước */}
+        <g className="cake-layer" style={{ animationDelay: '0.05s' }}>
+          <ellipse cx="200" cy="366" rx="170" ry="20" fill="var(--color-butter)" />
+          <ellipse cx="200" cy="362" rx="170" ry="20" fill="#FBF0DA" />
+          <ellipse cx="200" cy="362" rx="170" ry="20" {...LINE} />
+        </g>
+
+        {/* Tầng đáy — kem hồng bọc ngoài */}
+        <g className="cake-layer" style={{ animationDelay: '0.18s' }}>
+          <rect x="62" y="272" width="276" height="88" rx="8" fill="var(--color-cake-frosting)" />
+          <rect x="62" y="272" width="276" height="88" rx="8" fill="url(#sheen)" />
+          <rect x="62" y="272" width="276" height="88" rx="8" {...LINE} />
+        </g>
+
+        {/* Kem chảy tràn xuống tầng đáy */}
         <path
           className="cake-layer"
-          style={{ animationDelay: '0.92s' }}
-          d="M112 118h176v12a11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0Z"
-          fill="#FFF9F6"
+          style={{ animationDelay: '0.34s' }}
+          d="M58 258h284v16a7 7 0 0 1-7 7h-9v10a6 6 0 0 1-12 0v-10h-46v16a6 6 0 0 1-12 0v-16h-62v11a6 6 0 0 1-12 0v-11h-46v14a6 6 0 0 1-12 0v-14h-59a7 7 0 0 1-7-7Z"
+          fill="var(--color-cake-cream)"
+          stroke="var(--color-cocoa)"
+          strokeOpacity="0.16"
+          strokeWidth="1.6"
         />
 
-        {/* Tầng trên */}
-        <g className="cake-layer" style={{ animationDelay: '0.78s' }}>
-          <rect x="116" y="128" width="168" height="64" rx="7" fill="#F6C9C6" />
-          <rect x="116" y="128" width="168" height="64" rx="7" fill="url(#sheen)" />
+        {/* Tầng giữa — mặt cắt lộ cốt bánh */}
+        <g className="cake-layer" style={{ animationDelay: '0.48s' }}>
+          <g clipPath="url(#mid-tier)">
+            <rect x="88" y="196" width="224" height="22" fill="var(--color-cake-sponge)" />
+            <rect x="88" y="218" width="224" height="9" fill="var(--color-cake-cream)" />
+            <rect x="88" y="227" width="224" height="18" fill="var(--color-cake-cacao)" />
+            <rect x="88" y="245" width="224" height="9" fill="var(--color-cake-cream)" />
+            <rect x="88" y="254" width="224" height="14" fill="var(--color-cake-sponge)" />
+            <g fill="#fff" opacity="0.22">
+              <ellipse cx="132" cy="206" rx="5" ry="3" />
+              <ellipse cx="212" cy="210" rx="4" ry="2.4" />
+              <ellipse cx="268" cy="203" rx="5.5" ry="3" />
+              <ellipse cx="160" cy="236" rx="4.5" ry="2.6" />
+              <ellipse cx="246" cy="238" rx="5" ry="2.8" />
+              <ellipse cx="118" cy="260" rx="4" ry="2.4" />
+              <ellipse cx="284" cy="259" rx="4.5" ry="2.6" />
+            </g>
+          </g>
+          <rect x="88" y="196" width="224" height="72" rx="7" fill="url(#sheen)" />
+          <rect x="88" y="196" width="224" height="72" rx="7" {...LINE} />
         </g>
 
         {/* Lớp kem giữa tầng trên và tầng giữa */}
         <rect
           className="cake-layer"
           style={{ animationDelay: '0.64s' }}
-          x="84" y="184" width="232" height="15" rx="7.5" fill="#FFF9F6"
+          x="84" y="182" width="232" height="16" rx="8"
+          fill="var(--color-cake-cream)"
+          stroke="var(--color-cocoa)" strokeOpacity="0.16" strokeWidth="1.6"
         />
 
-        {/* Tầng giữa */}
-        <g className="cake-layer" style={{ animationDelay: '0.48s' }}>
-          <rect x="88" y="196" width="224" height="72" rx="7" fill="#FDECEB" />
-          <rect x="88" y="196" width="224" height="72" rx="7" fill="url(#sheen)" />
-          <g fill="#C4576B" opacity="0.55">
-            <rect x="122" y="222" width="9" height="3.4" rx="1.7" transform="rotate(-24 122 222)" />
-            <rect x="168" y="234" width="9" height="3.4" rx="1.7" transform="rotate(16 168 234)" />
-            <rect x="214" y="216" width="9" height="3.4" rx="1.7" transform="rotate(-9 214 216)" />
-            <rect x="252" y="238" width="9" height="3.4" rx="1.7" transform="rotate(31 252 238)" />
-          </g>
-          <g fill="#8FAE7A" opacity="0.5">
-            <rect x="146" y="248" width="9" height="3.4" rx="1.7" transform="rotate(8 146 248)" />
-            <rect x="238" y="210" width="9" height="3.4" rx="1.7" transform="rotate(-30 238 210)" />
-          </g>
+        {/* Tầng trên */}
+        <g className="cake-layer" style={{ animationDelay: '0.78s' }}>
+          <rect x="116" y="126" width="168" height="60" rx="7" fill="var(--color-cake-frosting)" />
+          <rect x="116" y="126" width="168" height="60" rx="7" fill="url(#sheen)" />
+          <rect x="116" y="126" width="168" height="60" rx="7" {...LINE} />
         </g>
 
-        {/* Lớp kem chảy xuống tầng đáy */}
+        {/* Kem phủ mặt, viền lượn sóng */}
         <path
           className="cake-layer"
-          style={{ animationDelay: '0.34s' }}
-          d="M58 260h284v14a7 7 0 0 1-7 7h-9v10a6 6 0 0 1-12 0v-10h-46v16a6 6 0 0 1-12 0v-16h-62v11a6 6 0 0 1-12 0v-11h-46v14a6 6 0 0 1-12 0v-14h-59a7 7 0 0 1-7-7Z"
-          fill="#FFF9F6"
+          style={{ animationDelay: '0.92s' }}
+          d="M112 116h176v12a11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0 11 11 0 0 1-22 0Z"
+          fill="var(--color-cake-cream)"
+          stroke="var(--color-cocoa)"
+          strokeOpacity="0.16"
+          strokeWidth="1.6"
         />
 
-        {/* Tầng đáy */}
-        <g className="cake-layer" style={{ animationDelay: '0.18s' }}>
-          <rect x="62" y="272" width="276" height="88" rx="8" fill="#F6C9C6" />
-          <rect x="62" y="272" width="276" height="88" rx="8" fill="url(#sheen)" />
-        </g>
-
-        {/* Đế bánh */}
-        <g className="cake-layer" style={{ animationDelay: '0.05s' }}>
-          <ellipse cx="200" cy="366" rx="168" ry="19" fill="#F3E3C3" />
-          <ellipse cx="200" cy="361" rx="168" ry="19" fill="#FBF0DA" />
-        </g>
-
-        <defs>
-          <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#fff" stopOpacity="0.4" />
-            <stop offset="0.35" stopColor="#fff" stopOpacity="0" />
-            <stop offset="1" stopColor="#4A2F2A" stopOpacity="0.07" />
-          </linearGradient>
-        </defs>
+        <Berry x={168} y={102} scale={0.85} rotate={-8} delay={1.06} />
+        <Berry x={200} y={97} scale={1} rotate={2} delay={1.12} />
+        <Berry x={232} y={104} scale={0.8} rotate={9} delay={1.18} />
       </svg>
     </div>
   )
