@@ -1,0 +1,74 @@
+[
+  {
+    "id": "cupcake-dau",
+    "name": "Cupcake dâu kem tươi",
+    "desc": "Cốt vani mềm, kem dâu đánh tay, dâu tươi cắt lát đặt lên trong ngày.",
+    "price": 35000,
+    "unit": "cái",
+    "image": "/images/hero-cupcake-dau.jpg",
+    "tag": "Bán chạy"
+  },
+  {
+    "id": "banh-socola",
+    "name": "Bánh socola tan chảy",
+    "desc": "Ba lớp cốt cacao đậm, phủ ganache socola đen 70% còn ấm.",
+    "price": 320000,
+    "unit": "bánh 16cm",
+    "image": "/images/banh-socola.jpg",
+    "tag": ""
+  },
+  {
+    "id": "macaron",
+    "name": "Macaron sáu vị",
+    "desc": "Vỏ giòn tang, nhân mềm: dâu, chanh dây, pistachio, trà xanh, cà phê, vani.",
+    "price": 25000,
+    "unit": "cái",
+    "image": "/images/macaron.jpg",
+    "tag": "Mới"
+  },
+  {
+    "id": "panna-cotta",
+    "name": "Panna cotta dâu",
+    "desc": "Kem sữa Ý mát lạnh trong hũ thuỷ tinh, sốt dâu tươi nấu ít đường.",
+    "price": 45000,
+    "unit": "hũ",
+    "image": "/images/panna-cotta-dau.jpg",
+    "tag": ""
+  },
+  {
+    "id": "tiramisu",
+    "name": "Tiramisu cà phê",
+    "desc": "Lớp mascarpone xen bánh champagne thấm espresso, rắc cacao nguyên chất.",
+    "price": 55000,
+    "unit": "miếng",
+    "image": "/images/tiramisu.jpg",
+    "tag": ""
+  },
+  {
+    "id": "cupcake-vani",
+    "name": "Cupcake vani cốm màu",
+    "desc": "Kem bơ vani nhẹ, rắc cốm đường nhiều màu. Món trẻ con gọi lại nhiều nhất.",
+    "price": 30000,
+    "unit": "cái",
+    "image": "/images/cupcake-vani.jpg",
+    "tag": ""
+  },
+  {
+    "id": "cupcake-bac-ha",
+    "name": "Cupcake bạc hà",
+    "desc": "Kem bạc hà mát, cốt vani, phủ cốm đường giòn. Ăn buổi chiều rất hợp.",
+    "price": 32000,
+    "unit": "cái",
+    "image": "/images/cupcake-bac-ha.jpg",
+    "tag": ""
+  },
+  {
+    "id": "cupcake-socola-bac-ha",
+    "name": "Cupcake socola bạc hà",
+    "desc": "Cốt socola đắng nhẹ, kem bạc hà, viên socola và lá bạc hà tươi.",
+    "price": 35000,
+    "unit": "cái",
+    "image": "/images/cupcake-socola-bacha.jpg",
+    "tag": ""
+  }
+]

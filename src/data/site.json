@@ -1,0 +1,12 @@
+{
+  "name": "Timu",
+  "fullName": "Tiệm bánh Timu",
+  "tagline": "Bánh nhà làm, mẻ nhỏ, ngọt vừa đủ",
+  "zaloPhone": "0900000000",
+  "phone": "0900000000",
+  "address": "TODO — số nhà, đường, phường, thành phố",
+  "hours": "8:00 – 21:00 mỗi ngày",
+  "facebook": "",
+  "instagram": "",
+  "_todo": "Thay zaloPhone, phone, address, hours bằng thông tin thật của tiệm. zaloPhone dùng cho link zalo.me/<số>."
+}
