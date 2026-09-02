@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import Button from './Button'
+import Logo from './Logo'
 import ZaloIcon from './ZaloIcon'
-import { site, zaloLink } from '../lib/site'
+import { zaloLink } from '../lib/site'
 
 const NAV = [
   { href: '#thuc-don', label: 'Thực đơn' },
@@ -25,15 +27,8 @@ export default function Header() {
         stuck ? 'bg-cream/85 shadow-[0_1px_0_rgba(74,47,42,0.08)] backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <a href="#top" className="flex items-baseline gap-2">
-          <span className="font-display text-2xl font-semibold tracking-tight text-raspberry">
-            {site.name}
-          </span>
-          <span className="hidden text-xs uppercase tracking-[0.22em] text-cocoa-soft sm:inline">
-            tiệm bánh
-          </span>
-        </a>
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
+        <Logo />
 
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((item) => (
@@ -47,16 +42,11 @@ export default function Header() {
           ))}
         </nav>
 
-        <a
-          href={zaloLink()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 rounded-full border border-raspberry/25 bg-cream px-4 py-2 text-sm font-semibold text-raspberry transition hover:bg-raspberry hover:text-cream"
-        >
+        <Button href={zaloLink()} target="_blank" rel="noopener noreferrer" size="sm" variant="soft">
           <ZaloIcon className="h-4 w-4" />
           <span className="hidden sm:inline">Nhắn Zalo</span>
           <span className="sm:hidden">Zalo</span>
-        </a>
+        </Button>
       </div>
     </header>
   )

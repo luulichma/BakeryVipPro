@@ -1,3 +1,4 @@
+import Button from './Button'
 import Reveal from './Reveal'
 import ZaloIcon from './ZaloIcon'
 import { menu, formatPrice, zaloLink } from '../lib/site'
@@ -39,22 +40,24 @@ export default function Menu() {
                 <h3 className="text-lg leading-snug font-semibold text-cocoa">{item.name}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-cocoa-soft">{item.desc}</p>
 
-                <div className="mt-5 flex items-center justify-between gap-3">
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-x-3 gap-y-4">
                   <p className="font-display text-xl font-semibold text-raspberry">
                     {formatPrice(item.price)}
                     <span className="ml-1 font-sans text-xs font-normal text-cocoa-soft">
                       /{item.unit}
                     </span>
                   </p>
-                  <a
+                  <Button
                     href={zaloLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 rounded-full bg-blush-soft px-3.5 py-2 text-xs font-semibold text-raspberry transition hover:bg-raspberry hover:text-cream"
+                    size="sm"
+                    variant="soft"
+                    className="shrink-0"
                   >
                     <ZaloIcon className="h-3.5 w-3.5" />
                     Đặt món này
-                  </a>
+                  </Button>
                 </div>
               </div>
             </article>

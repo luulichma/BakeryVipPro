@@ -1,3 +1,4 @@
+import Button from './Button'
 import Reveal from './Reveal'
 import ZaloIcon from './ZaloIcon'
 import { zaloLink } from '../lib/site'
@@ -23,7 +24,7 @@ const STEPS = [
 
 export default function CustomOrder() {
   return (
-    <section id="dat-banh" className="scroll-mt-24 bg-blush-soft/60 py-20 sm:py-28">
+    <section id="dat-banh" className="scroll-mt-24 bg-blush-soft py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
@@ -64,15 +65,10 @@ export default function CustomOrder() {
             </ol>
 
             <Reveal delay={340}>
-              <a
-                href={zaloLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-10 inline-flex items-center gap-2 rounded-full bg-raspberry px-7 py-3.5 text-sm font-semibold text-cream transition hover:-translate-y-0.5 hover:bg-raspberry-deep"
-              >
+              <Button href={zaloLink()} target="_blank" rel="noopener noreferrer" size="md" variant="primary" className="mt-10">
                 <ZaloIcon className="h-4 w-4" />
                 Gửi mẫu bánh qua Zalo
-              </a>
+              </Button>
             </Reveal>
           </div>
         </div>

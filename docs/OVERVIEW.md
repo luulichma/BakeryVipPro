@@ -59,6 +59,27 @@ Không dùng Firestore, Auth hay Functions — vì trang không lưu bất kỳ 
 - `/thuc-don`, `/san-pham/:slug`, `/ve-tiem` bằng React Router
 - Các section hiện tại đã là component độc lập nên tách được trực tiếp
 
+**Trang chi tiết bánh `/san-pham/:slug`** — việc chính của giai đoạn này.
+Hiện nút "Đặt món này" trong thực đơn bắn thẳng sang Zalo, người xem chưa kịp biết
+bánh có cỡ nào, giá bao nhiêu. Giai đoạn 4 đổi nút đó thành đường dẫn sang trang riêng
+của từng bánh, gồm:
+
+| Phần | Nội dung |
+|---|---|
+| Ảnh | Ảnh lớn của bánh, có thể thêm 2–3 ảnh phụ |
+| Mô tả | Mô tả dài hơn dòng `desc` ở thực đơn: cốt bánh, nhân, nguyên liệu |
+| Cỡ bánh | Bảng cỡ + giá tương ứng (ví dụ 14cm / 16cm / 20cm) |
+| Kiểu bánh | Các biến thể chọn được: vị cốt, vị kem, màu trang trí |
+| Ghi chú | Thời gian đặt trước, hạn dùng, cách bảo quản |
+| CTA | Nút Zalo — **vẫn là đích đến duy nhất**, kèm sẵn tên bánh trong tin nhắn |
+
+Trang này **không** có giỏ hàng và không lưu lựa chọn của khách. Các ô cỡ và kiểu bánh
+chỉ để khách xem và biết mình muốn gì, rồi bấm Zalo nhắn cho tiệm — đúng mục tiêu ở mục 1.
+
+Kéo theo hai thay đổi dữ liệu trong `menu.json`: mỗi món cần thêm `slug`,
+`sizes` (mảng cỡ + giá) và `variants` (mảng kiểu bánh). Trường `price` hiện tại
+trở thành "giá từ", lấy theo cỡ nhỏ nhất.
+
 ## 5. Sửa nội dung ở đâu
 
 | Muốn sửa | Sửa file |
@@ -66,7 +87,8 @@ Không dùng Firestore, Auth hay Functions — vì trang không lưu bất kỳ 
 | Tên tiệm, số Zalo, số điện thoại, địa chỉ, giờ mở cửa, mạng xã hội | `src/data/site.json` |
 | Danh sách bánh: tên, mô tả, giá, ảnh, nhãn | `src/data/menu.json` |
 | Ảnh | Bỏ file mới vào `public/images/`, trỏ tên file trong `menu.json` |
-| Màu thương hiệu, phông chữ | Khối `@theme` trong `src/index.css` |
+| Màu thương hiệu, phông chữ, màu chiếc bánh | Khối `@theme` trong `src/index.css` |
+| Cỡ và kiểu của mọi nút | `src/components/Button.jsx` |
 
 Những chỗ cần thay bằng dữ liệu thật được đánh dấu `TODO` ngay trong `site.json`.
 
@@ -79,6 +101,32 @@ Những chỗ cần thay bằng dữ liệu thật được đánh dấu `TODO` 
 | `#C4576B` | Hồng mâm xôi | Nút bấm, chữ nhấn |
 | `#4A2F2A` | Nâu caramel | Chữ (thay cho màu đen) |
 | `#F3E3C3` | Vàng bơ | Điểm nhấn phụ |
+
+Chiếc bánh SVG ở hero dùng bảng màu riêng, chọn bằng cách **đo tương phản trước khi vẽ**
+(mọi cặp mảng nằm cạnh nhau đều cách nhau ít nhất 1.49:1, thay vì 1.00–1.43 như bản đầu):
+
+| Mã | Mảng | Tương phản với nền |
+|---|---|---|
+| `#EFA9A7` | Kem hồng bọc tầng trên và tầng đáy | 1.85 |
+| `#FFF3E6` | Kem phủ mặt và các lớp kem | 1.05 — tách bằng nét viền |
+| `#C98B52` | Cốt bánh vani ở mặt cắt tầng giữa | 2.76 |
+| `#A06641` | Cốt bánh cacao | 4.50 |
+
+Vì cả bảng màu đều là pastel nên riêng tương phản nền không đủ; mọi mảng của bánh
+có thêm **nét viền** `rgba(74,47,42,0.16)` để tách bạch.
+
+## 6b. Hệ thống nút
+
+Mọi CTA đi qua `src/components/Button.jsx` — **3 cỡ** (`sm` / `md` / `lg`) và
+**6 kiểu** (`primary`, `dark`, `outline`, `soft`, `light`, `outlineLight`).
+Không đặt class nút thủ công ở bất kỳ đâu khác, nếu không sẽ lặp lại lỗi cũ:
+9 nút ra 5 cỡ đệm và 3 cỡ chữ khác nhau.
+
+## 6c. Nhịp màu các khối
+
+Trang đi từ nhạt tới đậm dần về phía nút Zalo cuối trang:
+hero và thực đơn nền kem → "Đặt bánh riêng" nền hồng nhạt → "Về tiệm" nền hồng đậm hơn
+→ "Ghé tiệm" nền nâu caramel.
 
 ## 7. Chạy và deploy
 

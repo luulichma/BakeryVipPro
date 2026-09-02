@@ -1,3 +1,4 @@
+import Button from './Button'
 import Reveal from './Reveal'
 import ZaloIcon from './ZaloIcon'
 import { site, zaloLink, telLink } from '../lib/site'
@@ -31,21 +32,13 @@ export default function Contact() {
             </p>
 
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href={zaloLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-cream px-8 py-4 text-sm font-semibold text-cocoa transition hover:-translate-y-0.5 hover:bg-blush sm:w-auto"
-              >
+              <Button href={zaloLink()} target="_blank" rel="noopener noreferrer" size="lg" variant="light" className="w-full sm:w-auto">
                 <ZaloIcon className="h-5 w-5" />
                 Nhắn Zalo cho tiệm
-              </a>
-              <a
-                href={telLink()}
-                className="flex w-full items-center justify-center rounded-full border border-cream/25 px-8 py-4 text-sm font-semibold text-cream transition hover:border-cream/60 sm:w-auto"
-              >
+              </Button>
+              <Button href={telLink()} size="lg" variant="outlineLight" className="w-full sm:w-auto">
                 Gọi {site.phone}
-              </a>
+              </Button>
             </div>
 
             <dl className="mx-auto mt-14 grid max-w-3xl gap-8 border-t border-cream/12 pt-10 sm:grid-cols-3">

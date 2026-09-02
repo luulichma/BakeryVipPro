@@ -1,3 +1,4 @@
+import Button from './Button'
 import CakeStack from './CakeStack'
 import { site, telLink } from '../lib/site'
 
@@ -31,18 +32,12 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-            <a
-              href="#thuc-don"
-              className="w-full rounded-full bg-cocoa px-7 py-3.5 text-center text-sm font-semibold text-cream transition hover:-translate-y-0.5 hover:bg-cocoa/90 sm:w-auto"
-            >
+            <Button href="#thuc-don" size="md" variant="dark" className="w-full sm:w-auto">
               Xem thực đơn hôm nay
-            </a>
-            <a
-              href={telLink()}
-              className="w-full rounded-full border border-cocoa/15 px-7 py-3.5 text-center text-sm font-semibold text-cocoa transition hover:border-cocoa/40 sm:w-auto"
-            >
+            </Button>
+            <Button href={telLink()} size="md" variant="outline" className="w-full sm:w-auto">
               Gọi {site.phone}
-            </a>
+            </Button>
           </div>
 
           <p className="mt-6 text-sm text-cocoa-soft/80">

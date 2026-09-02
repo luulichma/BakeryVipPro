@@ -3,7 +3,7 @@ import PhotoRibbon from './PhotoRibbon'
 
 export default function About() {
   return (
-    <section id="ve-tiem" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="ve-tiem" className="scroll-mt-24 bg-blush/45 py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-raspberry">Về tiệm</p>
